@@ -1,0 +1,21 @@
+/* Write your global styles here, in PostCSS syntax */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-mantle !text-text;
+  }
+
+
+.btn {
+	@apply rounded bg-blue px-20 py-2 text-base transition-all hover:bg-blue/95 active:scale-95;
+}
+
+.popup {
+	@apply max-h-[100vh] overflow-scroll prose prose-invert my-auto h-fit w-[100vw] rounded-xl bg-base p-7 drop-shadow-xl sm:w-[500px] sm:p-10;
+}
+
+.popup-container {
+	@apply fixed left-0 top-0 z-10 flex h-screen w-screen justify-center bg-mantle/10 align-middle backdrop-blur p-3;
+}
