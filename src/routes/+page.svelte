@@ -34,7 +34,7 @@
 	}
 </script>
 
-<div class="bg-surface fit mx-auto flex flex-col justify-center p-20 align-middle">
+<div class="bg-surface fit mx-auto flex flex-col justify-center p-3 align-middle sm:p-10 md:p-20">
 	<div class="flex flex-1 align-baseline">
 		<div class="prose prose-invert mx-auto mb-10 mt-auto w-full">
 			<h1 class="text-center">Lights Out</h1>
