@@ -1,5 +1,5 @@
 import { get } from 'svelte/store';
-import { board, state } from './state';
+import { board, history, moves, state, time } from './state';
 import { randomInt } from './utils';
 
 export type Board = Array<Array<boolean>>;
@@ -65,5 +65,16 @@ export function checkWin() {
 
 	if (lightCount === 0) {
 		state.set('won');
+
+		history.update((history) => {
+			return [
+				...history,
+				{
+					date: Date.now(),
+					time: get(time),
+					moves: get(moves)
+				}
+			];
+		});
 	}
 }

@@ -5,6 +5,7 @@
 	import { checkWin } from '$lib/board';
 	import { fade, fly } from 'svelte/transition';
 	import { onDestroy, onMount } from 'svelte';
+	import History from '$lib/history.svelte';
 
 	let hover = { x: -2, y: -2 };
 	let hilightedTiles: Array<{ x: number; y: number }> = [];
@@ -96,6 +97,9 @@
 			<div class="mb-5 flex">
 				<span>{$moves} moves</span><span class="flex-1 text-right">{$time}s</span>
 			</div>
+
+			<History />
+			<br />
 
 			<button class="btn w-full" on:click={reset}>Reset</button>
 		</div>
