@@ -98,8 +98,9 @@
 				<span>{$moves} moves</span><span class="flex-1 text-right">{$time}s</span>
 			</div>
 
+			<hr />
 			<History />
-			<br />
+			<hr />
 
 			<button class="btn w-full" on:click={reset}>Reset</button>
 		</div>

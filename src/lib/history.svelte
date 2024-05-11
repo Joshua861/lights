@@ -80,3 +80,6 @@
 </script>
 
 <canvas bind:this={canvas}></canvas>
+<span class="!text-blue">Moves</span> —
+<span class="!text-red">Time (s)</span>
+<br />
