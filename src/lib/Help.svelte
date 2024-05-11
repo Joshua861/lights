@@ -19,45 +19,43 @@
 	<div class="popup" transition:fly={{ y: 100 }}>
 		<h1>How to play.</h1>
 
-		<ol>
-			<li>
-				Going down the grid, for every row, click the square under every lit piece. Repeat this for
-				each row until you only have lights lit up on the bottom row.
-			</li>
-			<li>
-				This will leave you with one of a few patterns left. You can use this table to decide what
-				moves to make next.
+		<p>
+			Going down the grid, for every row, click the square under every lit piece. Repeat this for
+			each row until you only have lights lit up on the bottom row.
+		</p>
+		<p>
+			This will leave you with one of a few patterns left. You can use this table to decide what
+			moves to make next.
+		</p>
 
-				<table class="flex flex-col">
-					<thead>
-						<tr class="flex">
-							<th class="w-1/2" scope="col">Lights on bottom row.</th><th class="w-1/2" scope="col">
-								Where to click on the top row
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						{#each data as row}
-							<tr class="flex">
-								<td class="w-1/2">
-									<Lights pattern={row[0]} />
-								</td>
-								<td class="w-1/2">
-									<Clicks pattern={row[1]} />
-								</td>
-							</tr>
-						{/each}
-					</tbody>
-				</table>
-			</li>
+		<table class="flex flex-col">
+			<thead>
+				<tr class="flex">
+					<th class="w-1/2" scope="col">Lights on bottom row.</th><th class="w-1/2" scope="col">
+						Where to click on the top row
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				{#each data as row}
+					<tr class="flex">
+						<td class="w-1/2">
+							<Lights pattern={row[0]} />
+						</td>
+						<td class="w-1/2">
+							<Clicks pattern={row[1]} />
+						</td>
+					</tr>
+				{/each}
+			</tbody>
+		</table>
 
-			<li>
-				Repeat step one once more. If you did everything right, you should be left with an empty
-				board.
-			</li>
-		</ol>
+		<p>
+			Repeat step one once more. If you did everything right, you should be left with an empty
+			board.
+		</p>
 
 		<br />
-		<button class="btn w-full" on:click={() => state.set('playing')}>Ok. Thanks!</button>
+		<button class="btn w-full !p-2" on:click={() => state.set('playing')}>Ok. Thanks!</button>
 	</div>
 </div>

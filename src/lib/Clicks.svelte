@@ -4,7 +4,7 @@
 	export let pattern: string;
 </script>
 
-<div class="m-1 grid grid-cols-5 gap-[2px]">
+<div class="grid grid-cols-5 gap-[1px] sm:gap-[2px]">
 	{#each pattern.split('') as tile}
 		<Click on={tile === 'y'} />
 	{/each}

@@ -8,6 +8,6 @@
 	class="flex aspect-square w-full justify-center rounded border border-text/20 align-middle transition-all"
 >
 	{#if on}
-		<X class="my-auto h-max w-max p-2" />
+		<X class="my-auto h-max w-max sm:p-2" />
 	{/if}
 </div>
