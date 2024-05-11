@@ -1,12 +1,14 @@
 <script lang="ts">
-	import { board, state } from '$lib/state';
+	import { board, state, moves, time, timerStarted } from '$lib/state';
 	import { get } from 'svelte/store';
 	import { reset } from '$lib';
 	import { checkWin } from '$lib/board';
 	import { fade, fly } from 'svelte/transition';
+	import { onDestroy, onMount } from 'svelte';
 
 	let hover = { x: -2, y: -2 };
 	let hilightedTiles: Array<{ x: number; y: number }> = [];
+	let timerInterval;
 
 	$: hilightedTiles = [
 		{ x: hover.x + 1, y: hover.y },
@@ -30,8 +32,25 @@
 		});
 		board.set(boardSnap);
 
+		moves.set(get(moves) + 1);
+		timerStarted.set(true);
 		checkWin();
 	}
+
+	function incrementTimer() {
+		if ($state === 'playing' && $timerStarted) {
+			time.set(Math.round((get(time) + 0.1) * 10) / 10);
+			console.log('slkdfjklsd');
+		}
+	}
+
+	onMount(() => {
+		timerInterval = setInterval(incrementTimer, 100);
+	});
+
+	onDestroy(() => {
+		clearInterval(timerInterval);
+	});
 </script>
 
 <div class="bg-surface fit mx-auto flex flex-col justify-center p-3 align-middle sm:p-10 md:p-20">
@@ -49,7 +68,7 @@
 		{#each $board as row, y}
 			{#each row as piece, x}
 				<button
-					class="aspect-square w-full rounded border border-surface1/50 transition-all
+					class="aspect-square w-full rounded border border-text/20 transition-all
     {hilightedTiles.find((tile) => tile.y === y && tile.x === x) !== undefined
 						? 'bg-surface1/20'
 						: ''}
@@ -62,7 +81,9 @@
 			{/each}
 		{/each}
 	</div>
-	<div class="flex w-full flex-1 justify-center">
+	<div class="mt-5 flex w-full flex-1 flex-col justify-center">
+		<p class="w-full text-center">{$moves} moves — {$time}s</p>
+		<br />
 		<button class="btn mx-auto mb-auto mt-5" on:click={reset}>Reset</button>
 	</div>
 </div>
@@ -71,6 +92,10 @@
 	<div class="popup-container" transition:fade>
 		<div class="popup" transition:fly={{ y: 100 }}>
 			<h1 class="text-center">You win!</h1>
+
+			<div class="mb-5 flex">
+				<span>{$moves} moves</span><span class="flex-1 text-right">{$time}s</span>
+			</div>
 
 			<button class="btn w-full" on:click={reset}>Reset</button>
 		</div>

@@ -4,3 +4,6 @@ import { persisted } from 'svelte-persisted-store';
 
 export const board: Writable<Board> = persisted('board', []);
 export const state: Writable<'playing' | 'won'> = persisted('state', 'playing');
+export const time: Writable<number> = persisted('time', 0);
+export const moves: Writable<number> = persisted('moves', 0);
+export const timerStarted: Writable<boolean> = persisted('timer_started', false);
