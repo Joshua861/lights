@@ -6,6 +6,7 @@
 	import { fade, fly } from 'svelte/transition';
 	import { onDestroy, onMount } from 'svelte';
 	import History from '$lib/history.svelte';
+	import Help from '$lib/Help.svelte';
 
 	let hover = { x: -2, y: -2 };
 	let hilightedTiles: Array<{ x: number; y: number }> = [];
@@ -59,8 +60,9 @@
 		<div class="prose prose-invert mx-auto mb-10 mt-auto w-full">
 			<h1 class="text-center">Lights Out</h1>
 			<p class="text-center">
-				Turn off all the lights. <a href="https://www.logicgamesonline.com/lightsout/tutorial.html"
-					>Help</a
+				Turn off all the lights. <button
+					on:click={() => state.set('help')}
+					class="!text-white underline underline-offset-4">Help.</button
 				>
 			</p>
 		</div>
@@ -105,6 +107,8 @@
 			<button class="btn w-full" on:click={reset}>Reset</button>
 		</div>
 	</div>
+{:else if $state === 'help'}
+	<Help />
 {/if}
 
 <style>
