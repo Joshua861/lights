@@ -17,16 +17,9 @@
 
 <div class="popup-container" transition:fade>
 	<div class="popup" transition:fly={{ y: 100 }}>
-		<h1>How to play.</h1>
+		<h2 class="!my-2">How to play.</h2>
 
-		<p>
-			Going down the grid, for every row, click the square under every lit piece. Repeat this for
-			each row until you only have lights lit up on the bottom row.
-		</p>
-		<p>
-			This will leave you with one of a few patterns left. You can use this table to decide what
-			moves to make next.
-		</p>
+		<p>Going down the grid, for every row, click the square under every lit piece.</p>
 
 		<table class="flex flex-col">
 			<thead>
@@ -50,10 +43,7 @@
 			</tbody>
 		</table>
 
-		<p>
-			Repeat step one once more. If you did everything right, you should be left with an empty
-			board.
-		</p>
+		<p>Repeat step 1.</p>
 
 		<br />
 		<button class="btn w-full !p-2" on:click={() => state.set('playing')}>Ok. Thanks!</button>
