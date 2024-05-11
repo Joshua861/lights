@@ -33,7 +33,7 @@
 		new Chart(canvas, {
 			type: 'line',
 			data: {
-				labels: history.map((row) => format(new Date(row.date), 'yy-mm-dd')),
+				labels: history.map((row) => format(new Date(row.date), 'dd MMM yy')),
 				datasets: [
 					{
 						label: 'Moves',
