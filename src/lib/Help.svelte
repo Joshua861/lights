@@ -21,7 +21,7 @@
 
 		<p>Going down the grid, for every row, click the square under every lit piece.</p>
 
-		<table class="flex flex-col">
+		<table class="flex flex-col px-10">
 			<thead>
 				<tr class="flex">
 					<th class="w-1/2" scope="col">Lights on bottom row.</th><th class="w-1/2" scope="col">
@@ -45,7 +45,6 @@
 
 		<p>Repeat step 1.</p>
 
-		<br />
 		<button class="btn w-full !p-2" on:click={() => state.set('playing')}>Ok. Thanks!</button>
 	</div>
 </div>
